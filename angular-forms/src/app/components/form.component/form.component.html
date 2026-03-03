@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label>Nome:</label>
+        <input formControlName="name" type="text" placeholder="Digite seu nome completo...">
+        @if (form.get('name')?.invalid && form.get('name')?.touched) {
+            <small>Nome inválido (mínimo de 3 letras).</small>
+        }
+    </div>
+
+    <div>
+        <label>E-mail:</label>
+        <input formControlName="email" type="email" >
+        @if (form.get('email')?.invalid && form.get('name')?.touched) {
+            <small>Insira um e-mail válido.</small>
+        }
+    </div>
+
+    <div>
+        <label>Senha:</label>
+        <input formControlName="password" type="password">
+        @if (form.get('password')?.invalid && form.get('password')?.touched) {
+            <small>A senha deve conter no mínimo 6 dígitos.</small>
+        }
+    </div>
+
+    <div>
+        <label>Telemóvel:</label>
+        <input formControlName="phone" type="text">
+    </div>
+
+    <div>
+        <label>Perfil:</label>
+        <select formControlName="role" >
+            <option value="guest">Convidado</option>
+            <option value="admin">Administrador</option>
+            <option value="editor">Editor</option>
+        </select>
+    </div>
+    
+    <button type="submit" [disabled]="form.invalid">Registar</button>
+
+</form>
