@@ -1,0 +1,14 @@
+<div>
+    <li>
+        <span [class.completed]="taskData().isCompleted ">
+            {{ taskData().description }}
+        </span>
+
+
+        <button (click)="handleToggle()">
+            {{ taskData().isCompleted ? 'Refazer' : 'Concluido' }}
+        </button>
+        <button (click)="handleRemove()">Apagar</button>
+
+    </li>
+</div>
