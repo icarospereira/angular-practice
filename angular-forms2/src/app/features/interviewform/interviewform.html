@@ -1,0 +1,147 @@
+<h1>Interview Form</h1>
+<hr>
+<form [formGroup]="interviewForm.form" (ngSubmit)="Submit()">
+    <table>        
+        <tr>
+            <th><label>Nome:</label></th>
+            <th>
+                <input formControlName="name" type="text" placeholder="Digite seu nome completo...">
+                
+            </th>
+            <th>
+                @if (!interviewForm.form.get('name')?.valid && interviewForm.form.get('name')?.touched) {
+                    <small>Digite um nome válido.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>Gênero:</label></th>
+            <th>
+                <select formControlName="gender" name="genderSelec" id="">
+                    <option value='' disabled selected>Gênero...</option>
+                    <option value="male">Masculino</option>
+                    <option value="female">Feminino</option>
+                </select>
+                               
+            </th>
+            <th>
+                @if (!interviewForm.form.get('gender')?.valid && interviewForm.form.get('gender')?.touched) {
+                    <small>Selecione uma opção.</small>
+                } 
+            </th>
+        </tr>
+        <tr>
+            <th><label>E-mail:</label></th>
+            <th>
+                <input formControlName="email" type="email">
+                
+            </th>
+            <th>
+                @if (!interviewForm.form.get('email')?.valid && interviewForm.form.get('email')?.touched) {
+                    <small>Digite um email válido.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>NIF:</label></th>
+            <th>
+                <input formControlName="nif" type="number">
+                
+            </th>
+            <th>
+                @if (!interviewForm.form.get('nif')?.valid && interviewForm.form.get('nif')?.touched) {
+                    <small>Digite um nif válido.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>Nascimento:</label></th>
+            <th>
+                <input formControlName="birthDate" type="date">
+            </th>
+            <th>
+                @if (!interviewForm.form.get('birthDate')?.valid && interviewForm.form.get('birthDate')?.touched) {
+                    <small>Idade inválida.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>País:</label></th>
+            <th>
+                <select formControlName="country">
+                    <option value="" disabled selected>País...</option>                     
+                <!--Colocar loop aqui com os países-->
+                    @for (country of interviewForm.countries(); track country.id) {
+                    <option [value]="country.countryName">{{ country.countryName }}</option>
+                    }
+                <!---->
+                </select>
+                
+            </th>
+            <th>
+                @if (!interviewForm.form.get('country')?.valid && interviewForm.form.get('country')?.touched) {
+                <small>Selecione um país.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>Cidade:</label></th>
+            <th>                
+                <select formControlName="city" name="citySelec" id="">
+                    <option value="" disabled selected>Cidade...</option>
+                <!--Colocar loop aqui com as cidades-->                             
+                    @for (c of interviewForm.cities(); track $index) {                                               
+                    <option [value]="c">{{c}}</option>                        
+                    }
+                <!---->
+                </select>
+                
+            </th>
+            <th>
+                @if (!interviewForm.form.get('city')?.valid && interviewForm.form.get('city')?.touched) {
+                <small>Selecione uma cidade.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>Morada:</label></th>
+            <th>
+                <input formControlName="address" type="text">
+                
+            </th>
+            <th>
+                @if (!interviewForm.form.get('address')?.valid && interviewForm.form.get('address')?.touched) {
+                    <small>Digite uma morada.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>Código Postal:</label></th>
+            <th>                
+                <input formControlName="postalCode" type="text" placeholder="xxxx-xxx(PT) ou xxxxx-xxx">
+                
+            </th>
+            <th>
+                @if (!interviewForm.form.get('postalCode')?.valid && interviewForm.form.get('postalCode')?.touched) {
+                    <small>Código Postal Inválido.</small>
+                }
+            </th>
+        </tr>
+        <tr>
+            <th><label>Telemóvel:</label></th>
+            <th>
+                <input formControlName="phone" type="number" placeholder="Somente números">
+            </th>
+            <th>
+                @if (!interviewForm.form.get('phone')?.valid && interviewForm.form.get('phone')?.touched) {
+                    <small>Digite um telemóvel válido.</small>
+                }
+            </th>
+
+        </tr>
+
+        <tr><button type="submit" [disabled]="interviewForm.form.invalid"> Enviar </button></tr>
+    </table>
+
+    
+</form>

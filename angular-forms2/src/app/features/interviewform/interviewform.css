@@ -1,0 +1,14 @@
+th{
+    text-align: left;
+    
+}
+
+input[type=number]{
+  appearance: textfield;
+  margin: 0;
+}
+
+small{
+  color: red;
+  text-decoration: none;
+}
