@@ -1,0 +1,11 @@
+@for (item of news(); track $index) {
+    <div>
+        <h2>{{item.title}}</h2>
+        @if (item.imgUrl) {
+        <img [src]="item.imgUrl" alt="" width="300px">
+        }
+        <p>{{item.cleanDescription}}</p>                
+    </div>
+}
+
+<button (click)="service.refresh()">Atualizar</button>
