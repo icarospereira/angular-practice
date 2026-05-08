@@ -1,0 +1,42 @@
+<br>
+<div>
+    <form [formGroup]="form">
+    <div>
+        <label>User ID: <input formControlName="userId" type="number"></label>
+        <br>
+        <label>Descrição da tarefa: <input formControlName="task" type="text" placeholder="Insira a nova tarefa..."></label>
+    </div>
+    <button type="submit" (click)="service.createTask()" [disabled]="form.invalid">Criar</button>
+</form>
+<br>
+</div>
+<div>
+
+    @if(service.status() == 'success'){
+        <span>{{service.message()}}</span>
+        <br>
+        @for (user of service.users(); track user.userId) {
+            <span>User: {{user.userName}}</span>
+            <br>
+            
+            @if(user.tasks.length == 0){
+                <span>Não há tarefas!</span>
+            }
+
+            @for (task of user.tasks; track task.taskId) {                
+                <span>{{task.taskId}} </span>
+                <span> {{task.task}}</span>
+                <button (click)="service.changeTaskStatus(task.taskId)">Concluir</button>
+                <button (click)="service.deleteTask(task.taskId)">Deletar</button>                
+                <span> | Status: {{task.taskStatus}}</span>
+                <br>
+            }
+            <br>
+        }
+    }
+    
+
+</div>
+<br>
+
+<button value="Buscar Dados" (click)="service.fetchData()" [disabled]="form.get('userId')?.invalid">Buscar Dados</button>

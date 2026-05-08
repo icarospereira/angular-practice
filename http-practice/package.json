@@ -1,11 +1,12 @@
 {
-  "name": "simple-feed",
+  "name": "http-practice",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
   "prettier": {
     "printWidth": 100,
@@ -28,18 +29,13 @@
     "@angular/forms": "^21.1.0",
     "@angular/platform-browser": "^21.1.0",
     "@angular/router": "^21.1.0",
-    "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.8",
     "rxjs": "~7.8.0",
-    "tailwindcss": "^4.2.1",
-    "tslib": "^2.3.0",
-    "xml2js": "^0.6.2"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@angular/build": "^21.1.5",
     "@angular/cli": "^21.1.5",
     "@angular/compiler-cli": "^21.1.0",
-    "@types/xml2js": "^0.4.14",
     "jsdom": "^27.1.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
